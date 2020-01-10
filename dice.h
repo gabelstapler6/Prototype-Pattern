@@ -2,9 +2,9 @@
 #include <time.h>
 
 class Dice{
-    private:
-    unsigned int value;
     
     public:
+    unsigned int value;
+    Dice();
     int roll();
 };
