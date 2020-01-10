@@ -20,8 +20,9 @@ void EnemyForce::createWave(){
     }
 
     KnightPrototype Knight = new KnightPrototype( D.roll()*D.roll(), D.roll()*100, weapon, type );
-    KnightPrototype K = Knight.clone();
-    
+
+    //KnightPrototype K = dynamic_cast<KnightPrototype*>(Knight.clone());
+
     int number = D.roll()*10;
 
     for(int i = 0; i < number; i++){
