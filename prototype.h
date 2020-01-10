@@ -1,61 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "dice.h"
 
-class EnemyPrototype{
-    private:
-    int strength;
-    int lifePoints;
-    std::string weapon;
 
-    protected:
-    EnemyPrototype(EnemyPrototype*);
-
+class Prototype{
     public:
-    EnemyPrototype(int, int, std::string);
-    void setStrengh(int);
-    void setLP(int);
-    void setWeapon(std::string);
-    int getStrength();
-    int getLP();
-    std::string getWeapon();
-
-    virtual void printValues() = 0;
-
-    virtual EnemyPrototype* clone() = 0;
+    virtual void print() = 0;
+    virtual Prototype* clone() = 0;
 };
 
 
-
-class KnightPrototype : public EnemyPrototype{
-
+class CloneTrooper : public Prototype{
     private:
-    std::string type;
-    
+    std::string name;    
 
     public:
-    KnightPrototype(int, int, std::string, std::string);
-    KnightPrototype(KnightPrototype*);
-    
-    void setType(std::string);
-    std::string getType();
-    void printValues();
+    CloneTrooper(CloneTrooper*);
+    CloneTrooper(std::string);
+    void print();
+    static int getCount();
 
-    EnemyPrototype* clone();
+    Prototype* clone();
 };
 
-
-
-class EnemyForce{
+class AstroDroid : public Prototype{
     private:
-    std::vector<EnemyPrototype*> wave;
+    std::string identity;
 
     public:
-    EnemyForce();
-    void createWave();
+    AstroDroid(AstroDroid*);
+    AstroDroid(std::string);
+    void print();
+    static int getCount();
 
+    Prototype* clone();
 };
+
 
 
 

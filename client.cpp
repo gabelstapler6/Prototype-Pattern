@@ -1,12 +1,12 @@
 #include "prototype.h"
 
 
-EnemyForce::EnemyForce(){
+Client::Client(){
     this->createWave();
 }
 
 
-void EnemyForce::createWave(){
+void Client::createWave(){
     Dice D;
     std::string weapon, type;
 
@@ -19,7 +19,7 @@ void EnemyForce::createWave(){
         type = "heavy";
     }
 
-    KnightPrototype Knight = new KnightPrototype( D.roll()*D.roll(), D.roll()*100, weapon, type );
+    CloneTrooper Knight = new CloneTrooper( D.roll()*D.roll(), D.roll()*100, weapon, type );
 
     //KnightPrototype K = dynamic_cast<KnightPrototype*>(Knight.clone());
 
