@@ -48,8 +48,10 @@ class KnightPrototype : public EnemyPrototype{
 
 
 class EnemyForce{
-    public:
+    private:
     std::vector<EnemyPrototype*> wave;
+
+    public:
     EnemyForce();
     void createWave();
 
