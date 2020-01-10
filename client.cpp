@@ -9,7 +9,7 @@ EnemyForce::EnemyForce(){
 void EnemyForce::createWave(){
     Dice D;
     std::string weapon, type;
-    
+
 
     if(D.value%2 == 0){
         weapon = "sword";
@@ -32,5 +32,7 @@ void EnemyForce::createWave(){
     std::cout << "created " << number << " clones of:\n";
 
     wave.at(0)->printValues();
+    std::cout << &wave.at(0) << " " << &wave.at(1);
+    wave.at(1)->printValues();
 
 }
