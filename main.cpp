@@ -10,7 +10,7 @@ int main(){
     std::cout << "\n";
     BobaFett.print();
     std::cout << "\n";
-    
+
     std::cout << "Jango Adress: " << &JangoFett << "\n" << "Boba Adress: " << &BobaFett << "\n";
 
     AstroDroid R2D2(69, "R2D2");
