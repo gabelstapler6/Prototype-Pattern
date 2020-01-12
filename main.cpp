@@ -31,9 +31,9 @@ int main(){
 
     std::cout << std::endl;
     //Array augeben
-    for(int i = 0; i < 10; i++){
-        CopyOfClones[i]->print();
-        std::cout << "Adress: " << &CopyOfClones[i] << "\n\n"; //Adresse im Speicher immer unterschiedlich -> echte Klone
+    for(auto &i : CopyOfClones){
+        i->print();
+        std::cout << "Adress: " << &i << "\n\n"; //Adresse im Speicher immer unterschiedlich -> echte Klone
     }
 
     system("pause");
