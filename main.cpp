@@ -4,12 +4,14 @@
 int main(){
 
     CloneTrooper JangoFett("Jango Fett");
-    CloneTrooper BobaFett = JangoFett.clone();
+    CloneTrooper BobaFett = JangoFett; //JangoFett Klonen
 
     JangoFett.print();
     BobaFett.print();
+    std::cout << &JangoFett << "\n" << &BobaFett << "\n";
 
     AstroDroid R2D2("R2D2");
+
 
     Prototype* Clones[10];
 

@@ -16,7 +16,6 @@ class CloneTrooper : public Prototype{
 
     public:
     CloneTrooper(const CloneTrooper*);
-    CloneTrooper(const Prototype*);
     CloneTrooper(std::string);
     void print();
     static int getCount();
@@ -30,7 +29,7 @@ class AstroDroid : public Prototype{
     
     public:
     AstroDroid(std::string);
-    AstroDroid(const Prototype*);
+    AstroDroid(AstroDroid*);
     void print();
     static int getCount();
 

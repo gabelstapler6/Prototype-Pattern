@@ -9,6 +9,7 @@ CloneTrooper::CloneTrooper(const CloneTrooper* copy){
     this->name = copy->name;
 }
 
+
 CloneTrooper::CloneTrooper(std::string name){
     this->name = name;
 }
