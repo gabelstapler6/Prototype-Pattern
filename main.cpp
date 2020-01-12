@@ -3,15 +3,17 @@
 
 int main(){
 
-    CloneTrooper JangoFett("Jango Fett");
-    CloneTrooper BobaFett = JangoFett; //JangoFett Klonen
+    CloneTrooper JangoFett(42, "Jango Fett");
+    CloneTrooper BobaFett = (CloneTrooper*)JangoFett.clone(); //JangoFett Klonen
 
     JangoFett.print();
+    std::cout << "\n";
     BobaFett.print();
-    std::cout << &JangoFett << "\n" << &BobaFett << "\n";
+    std::cout << "\n";
+    
+    std::cout << "Jango Adress: " << &JangoFett << "\n" << "Boba Adress: " << &BobaFett << "\n";
 
-    AstroDroid R2D2("R2D2");
-
+    AstroDroid R2D2(69, "R2D2");
 
     Prototype* Clones[10];
 

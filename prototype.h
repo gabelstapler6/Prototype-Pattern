@@ -4,10 +4,18 @@
 
 
 class Prototype{
+    private:
+    int age;
+
     public:
+    Prototype(int a) : age(a) {}
+    Prototype(const Prototype* c) : age(c->age) {}
+
+    int getAge() const { return age; }
     virtual void print() = 0;
     virtual Prototype* clone() = 0;
 };
+
 
 
 class CloneTrooper : public Prototype{
@@ -15,10 +23,10 @@ class CloneTrooper : public Prototype{
     std::string name;    
 
     public:
-    CloneTrooper(const CloneTrooper*);
-    CloneTrooper(std::string);
+    CloneTrooper(const CloneTrooper* c) : name(c->name), Prototype(c) {}
+    CloneTrooper(int age, std::string n) : name(n), Prototype(age) {}
+
     void print();
-    static int getCount();
 
     Prototype* clone();
 };
@@ -28,10 +36,10 @@ class AstroDroid : public Prototype{
     std::string identity;
     
     public:
-    AstroDroid(std::string);
-    AstroDroid(AstroDroid*);
+    AstroDroid(const AstroDroid* c) : identity(c->identity), Prototype(c) {}
+    AstroDroid(int age, std::string s) : identity(s), Prototype(age) {}
+    
     void print();
-    static int getCount();
 
     Prototype* clone();
 };

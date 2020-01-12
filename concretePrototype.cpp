@@ -5,15 +5,6 @@ Prototype* CloneTrooper::clone(){
     return new CloneTrooper(this);
 }
 
-CloneTrooper::CloneTrooper(const CloneTrooper* copy){
-    this->name = copy->name;
-}
-
-
-CloneTrooper::CloneTrooper(std::string name){
-    this->name = name;
-}
-
 void CloneTrooper::print(){
-    std::cout << "I am the Clone " << this->name << "\n";
+    std::cout << "I am the Clone " << this->name << "\nand I am " << this->getAge() << " years old\n";
 }
