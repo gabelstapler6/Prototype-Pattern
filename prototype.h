@@ -2,20 +2,24 @@
 #include <vector>
 #include <string>
 
-
+//Prototype:
 class Prototype{
     private:
+    //private Member-Variable 
     int age;
 
     public:
     Prototype(int a) : age(a) {}
-    Prototype(const Prototype* c) : age(c->age) {}
+    Prototype(const Prototype* c) : age(c->age) {} //Copy-Konstruktor
 
     int getAge() const { return age; }
+    void setAge(int a){ this->age = a; }
     virtual void print() = 0;
-    virtual Prototype* clone() = 0;
+    //pure virtual Funtkion clone die von den Subklassen implementiert werden muss 
+    virtual Prototype* clone() = 0; 
 };
 
+//Prototype "Speicher"
 class CloneRegister{
     int size;
     Prototype **clonePrototypes;
@@ -24,49 +28,30 @@ class CloneRegister{
     CloneRegister(int s) : size(s) {
         clonePrototypes = new Prototype*[s];
     }
-    void savePrototype(Prototype* save, int index){
-        if(index < size){
-            clonePrototypes[index] = save;
-        }else{
-            std::cout << "Array out of Bounds\n";
-        }
+
+    void savePrototype(Prototype*, int);
+    Prototype* getPrototype(int index) const;
+    int getSize(){ return size; }
+};
+//Prototyp "speichern"
+void CloneRegister::savePrototype(Prototype* save, int index){
+    if(index < size){
+        clonePrototypes[index] = save;
+    }else{
+        std::cout << "Array out of Bounds\n";
     }
-    Prototype* getPrototype(int index) const {
-        if(index < size){
-            return clonePrototypes[index];
-        }else{
-            std::cout << "Array out of Bounds\n";
-            return nullptr;
-        }
+}
+//Prototyp "Speicher" aufrufen
+Prototype* CloneRegister::getPrototype(int index) const {
+    if(index < size){
+        return clonePrototypes[index];
+    }else{
+        std::cout << "Array out of Bounds\n";
+        return nullptr;
     }
+}
 
-};
 
-class CloneTrooper : public Prototype{
-    private:
-    std::string name;    
-
-    public:
-    CloneTrooper(const CloneTrooper* c) : name(c->name), Prototype(c) {}
-    CloneTrooper(int age, std::string n) : name(n), Prototype(age) {}
-
-    void print();
-
-    Prototype* clone();
-};
-
-class AstroDroid : public Prototype{
-    private:
-    std::string identity;
-    
-    public:
-    AstroDroid(const AstroDroid* c) : identity(c->identity), Prototype(c) {}
-    AstroDroid(int age, std::string s) : identity(s), Prototype(age) {}
-    
-    void print();
-
-    Prototype* clone();
-};
 
 
 
