@@ -16,7 +16,31 @@ class Prototype{
     virtual Prototype* clone() = 0;
 };
 
+class CloneRegister{
+    int size;
+    Prototype **clonePrototypes;
 
+    public:
+    CloneRegister(int s) : size(s) {
+        clonePrototypes = new Prototype*[s];
+    }
+    void savePrototype(Prototype* save, int index){
+        if(index < size){
+            clonePrototypes[index] = save;
+        }else{
+            std::cout << "Array out of Bounds\n";
+        }
+    }
+    Prototype* getPrototype(int index) const {
+        if(index < size){
+            return clonePrototypes[index];
+        }else{
+            std::cout << "Array out of Bounds\n";
+            return nullptr;
+        }
+    }
+
+};
 
 class CloneTrooper : public Prototype{
     private:
