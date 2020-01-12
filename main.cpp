@@ -4,7 +4,7 @@
 int main(){
 
     CloneTrooper JangoFett("Jango Fett");
-    CloneTrooper BobaFett = (CloneTrooper*) JangoFett.clone(); //Clone mit Cast wegen C++
+    CloneTrooper BobaFett = JangoFett.clone();
 
     JangoFett.print();
     BobaFett.print();

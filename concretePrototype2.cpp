@@ -2,12 +2,10 @@
 
 
 Prototype* AstroDroid::clone(){
-    return new AstroDroid(this);
+    AstroDroid *Clone = new AstroDroid(this->identity);
+    return Clone;
 }
 
-AstroDroid::AstroDroid(AstroDroid* copy){
-    this->identity = copy->identity;
-}
 
 AstroDroid::AstroDroid(std::string identity){
     this->identity = identity;

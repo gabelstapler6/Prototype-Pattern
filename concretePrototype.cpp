@@ -5,7 +5,7 @@ Prototype* CloneTrooper::clone(){
     return new CloneTrooper(this);
 }
 
-CloneTrooper::CloneTrooper(CloneTrooper* copy){
+CloneTrooper::CloneTrooper(const CloneTrooper* copy){
     this->name = copy->name;
 }
 
