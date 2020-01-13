@@ -1,35 +1,40 @@
-#include "prototype.h"
+#include "concretePrototype.h"
 
 
 int main(){
 //Register mit Speicher für 2 Prototypen
-    CloneRegister Register(2);
+    CloneManager Manager(2);
 
 //Instanzen anlegen
+    std::cout << "Instanzen werden angelegt:\n";
     CloneTrooper JangoFett(42, "Jango Fett"); 
     AstroDroid R2D2(108, "R2D2");
 
-    Register.savePrototype(&JangoFett, 0); //Die Instanzen im Array als Prototypen speichern
-    Register.savePrototype(&R2D2, 1);
+    system("cls");
 
-//Hier wird der Copy-Konstruktor von CloneTrooper
+    Manager.savePrototype(&JangoFett, 0); //Die Instanzen im Array als Prototypen speichern
+    Manager.savePrototype(&R2D2, 1);
+
+//Hier wird ganz normal der Copy-Konstruktor von CloneTrooper
 //aufgerufen um einen Klon zu erstellen
-    CloneTrooper BobaFett = (CloneTrooper*)Register.getPrototype(0); 
-
+    CloneTrooper BobaFett = (CloneTrooper*)Manager.getPrototype(0);
+    std::cout << "Boba Fett: \n";
     BobaFett.print();
-    std::cout << "\nJango: " << &JangoFett << "\n" << "Boba: " << &BobaFett << "\n"; //Ausgabe der Objekt-Adressen auf stdout -> echte Klone
+    system("cls");
 
-    Prototype* Clone = Register.getPrototype(0)->clone(); //aus dem Prototypen einen echten Klon erstellen
+    Prototype* Clone = Manager.getPrototype(0)->clone(); //aus dem Prototypen einen echten Klon erstellen
+//Klon von JangoFett erstellt
     std::cout << std::endl;
-
-    std::cout << "Clone: " << Clone << "\n"; //Speicheradresse des Klons 
+    std::cout << "Clone: \n";
     Clone->print(); //Ausgabe der Member
     std::cout << std::endl;
     delete Clone;
-
-    Clone = Register.getPrototype(1)->clone(); //einen R2D2 klonen
+    
+    Clone = Manager.getPrototype(1)->clone(); //einen R2D2 klonen
+    std::cout << std::endl;
+    std::cout << "Clone: \n";
     Clone->print(); //Test ob wirklich geklont wurde
-    std::cout << "\n";
+    system("cls");
 
 //Array aus Prototypen
 //hier wird jedes zweite mal je 5 mal ein Astrodroid und ein CloneTrooper geklont
@@ -37,11 +42,10 @@ int main(){
     Prototype* Array[10];
     for(int i = 0; i < 10; i++){
         if(i%2 == 0){
-            Array[i] = Register.getPrototype(1)->clone();
+            Array[i] = Manager.getPrototype(1)->clone();
         }else{
-            Array[i] = Register.getPrototype(0)->clone();
-        }
-        
+            Array[i] = Manager.getPrototype(0)->clone();
+        } 
     }
 
 //hier wird das Array als ganzes nochmal geklont
@@ -52,9 +56,11 @@ int main(){
         ArrayClone[i] = Array[i]->clone();
     }
 
+    system("cls");
+
     std::cout << "\nArray      ArrayClone\n";
+//Ausgeben der Speicheradressen von Array und ArrayClone
     for(size_t i = 0; i < 10; i++){ 
-        //Ausgeben der Speicheradressen von Array und ArrayClone
         std::cout << Array[i] << "   " << ArrayClone[i] << "\n";
     }
     
@@ -62,9 +68,19 @@ int main(){
 
 //zum Test ob auch wirklich alle Membervariablen geklont wurden
     for(auto &i : ArrayClone){
+        i->setVal("Clone");
         i->print();
         std::cout << std::endl;
     }
+
+    std::cout << "Originales Array:\n\n";
+//Ausgabe des Originalen Arrays von Klonen
+//die Member name und identity wurde hier nicht geändert 
+    for(auto &i : Array){
+        i->print();
+        std::cout << std::endl;
+    }
+
 
     system("pause");
     return 0;

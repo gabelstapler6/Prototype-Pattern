@@ -2,54 +2,45 @@
 #include <vector>
 #include <string>
 
+typedef std::string object;
+
 //Prototype:
 class Prototype{
-    private:
-    //private Member-Variable 
-    int age;
+    private: 
+    int age; //private Member-Variable
 
     public:
-    Prototype(int a) : age(a) {}
-    Prototype(const Prototype* c) : age(c->age) {} //Copy-Konstruktor
+    Prototype(const Prototype*); //Copy-Konstruktor
+    Prototype(int); //Parameterisierter Konstruktor
 
-    int getAge() const { return age; }
-    void setAge(int a){ this->age = a; }
+    int getAge() const; //getter für den Member age
+    void setAge(int); //setter für den Member age
+
+    //pure virtual Funktionen, die von den Subklassen implementiert werden müssen
+    virtual void setVal(object) = 0;
+    virtual object getVal() const = 0;
     virtual void print() = 0;
-    //pure virtual Funtkion clone die von den Subklassen implementiert werden muss 
+    //wichtige clone Funktion
     virtual Prototype* clone() = 0; 
 };
 
+
+
+
 //Prototype "Speicher"
-class CloneRegister{
-    int size;
-    Prototype **clonePrototypes;
+class CloneManager{
+    unsigned int size; //Größe des Arrays
+    Prototype **clonePrototypes; //Pointer auf Pointer vom typ Prototype
 
     public:
-    CloneRegister(int s) : size(s) {
-        clonePrototypes = new Prototype*[s];
-    }
+    CloneManager(unsigned int); //Konstruktor mit wert für size 
 
-    void savePrototype(Prototype*, int);
-    Prototype* getPrototype(int index) const;
-    int getSize(){ return size; }
+    void savePrototype(Prototype*, int); //einen Initialisierten Prototype im Manager speichern 
+    Prototype* getPrototype(unsigned int) const; //einen Prototype aus dem Manager laden
+    int getSize() const; //getter für size
+    
 };
-//Prototyp "speichern"
-void CloneRegister::savePrototype(Prototype* save, int index){
-    if(index < size){
-        clonePrototypes[index] = save;
-    }else{
-        std::cout << "Array out of Bounds\n";
-    }
-}
-//Prototyp "Speicher" aufrufen
-Prototype* CloneRegister::getPrototype(int index) const {
-    if(index < size){
-        return clonePrototypes[index];
-    }else{
-        std::cout << "Array out of Bounds\n";
-        return nullptr;
-    }
-}
+
 
 
 

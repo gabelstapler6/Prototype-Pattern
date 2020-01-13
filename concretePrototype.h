@@ -3,32 +3,33 @@
 //concrete Prototype 1:
 class CloneTrooper : public Prototype{
     private:
-    //private Member-Variable
-    std::string name;    
+    std::string name; //private Member-Variable 
 
     public:
-    //Konstruktoren mit Initialisiererliste
-    CloneTrooper(const CloneTrooper* c) : name(c->name), Prototype(c) {} //Copy-Konstruktor
-    CloneTrooper(int age, std::string n) : name(n), Prototype(age) {} //Parameterisierter Konstruktor
+    CloneTrooper(const CloneTrooper*); //Copy-Konstruktor
+    CloneTrooper(int, std::string); //Parameterisierter Konstruktor
+    
+    void setVal(std::string); //setter für Member name
+    std::string getVal() const; //getter für Member name
+    void print(); //Ausgabefunktion
 
-    void print();
-
-    Prototype* clone();
+    Prototype* clone(); //muss von jeder Subklasse selbst implementiert werden
 };
+
+
 
 //concrete Prototype 2:
 class AstroDroid : public Prototype{
     private:
-    //private Member-Variable
-    std::string identity;
+    std::string identity; //private Member-Variable
     
     public:
-    //Konstruktoren mit Initialisiererliste
-    AstroDroid(const AstroDroid* c) : identity(c->identity), Prototype(c) {} //Copy-Konstruktor
-    AstroDroid(int age, std::string s) : identity(s), Prototype(age) {} //Parameterisierter Konstruktor
+    AstroDroid(const AstroDroid* c); //Copy-Konstruktor
+    AstroDroid(int age, std::string s); //Parameterisierter Konstruktor
     
-    //Ausgabefunktion 
-    void print();
+    void setVal(std::string); //setter für Member identity
+    std::string getVal() const; //getter für Member identity
+    void print(); //Ausgabefunktion
 
-    Prototype* clone();
+    Prototype* clone(); //muss von jeder Subklasse selbst implementiert werden 
 };
