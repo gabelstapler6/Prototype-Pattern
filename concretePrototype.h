@@ -13,7 +13,7 @@ class CloneTrooper : public Prototype{
     std::string getVal() const; //getter für Member name
     void print(); //Ausgabefunktion
 
-    Prototype* clone(); //muss von jeder Subklasse selbst implementiert werden
+    Prototype* clone() const; //muss von jeder Subklasse selbst implementiert werden
 };
 
 
@@ -31,5 +31,5 @@ class AstroDroid : public Prototype{
     std::string getVal() const; //getter für Member identity
     void print(); //Ausgabefunktion
 
-    Prototype* clone(); //muss von jeder Subklasse selbst implementiert werden 
+    Prototype* clone() const; //muss von jeder Subklasse selbst implementiert werden 
 };

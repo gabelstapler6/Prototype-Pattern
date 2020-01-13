@@ -5,7 +5,7 @@
 //die clone funktion muss wegen der Abstrakten Klasse Prototype implemetiert werden
 //gibt einen Prototyp Zeiger auf ein neu allokiertes CloneTrooper Objekt zurück
 //der Copy-Konstruktor wird aufgerufen
-Prototype* CloneTrooper::clone(){
+Prototype* CloneTrooper::clone() const {
     std::cout << "...Klon wird Produziert\n";
     return new CloneTrooper(this);
 }
@@ -40,7 +40,7 @@ void CloneTrooper::print(){
 //concrete Prototype 2:
 
 //wie bei CloneTrooper
-Prototype* AstroDroid::clone(){
+Prototype* AstroDroid::clone() const {
     std::cout << "...Klon wird Produziert\n";
     return new AstroDroid(this);
 }

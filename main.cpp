@@ -65,7 +65,7 @@ int main(){
     }
     
     std::cout << std::endl;
-
+    system("cls");
 //zum Test ob auch wirklich alle Membervariablen geklont wurden
     for(auto &i : ArrayClone){
         i->setVal("Clone");

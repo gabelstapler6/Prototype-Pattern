@@ -21,7 +21,7 @@ class Prototype{
     virtual object getVal() const = 0;
     virtual void print() = 0;
     //wichtige clone Funktion
-    virtual Prototype* clone() = 0; 
+    virtual Prototype* clone() const = 0; 
 };
 
 
