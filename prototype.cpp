@@ -1,12 +1,12 @@
 #include "prototype.h"
 
 //Copy-Konstruktor
-Prototype::Prototype(const Prototype* c) : age(c->age) {
-    std::cout << "Prototype Copy-Konstruktor wird aufgerufen...\n";
+Prototype::Prototype(const Prototype& c) : age(c.age) {
+    std::cout << "Prototype Copy-Konstruktor called...\n";
 }
 //Parameterisierter Konstruktor
-Prototype::Prototype(int a) : age(a) {
-    std::cout << "Prototype Konstruktor mit Parametern wird aufgerufen...\n";
+Prototype::Prototype() : age(0), name("") {
+    std::cout << "Prototype Default-Constructor called...\n";
 } 
 
 //getter für Member age
@@ -18,7 +18,13 @@ void Prototype::setAge(int a){
     this->age = a; 
 }
 
+std::string Prototype::getName() const {
+    return this->name;
+}
 
+void Prototype::setName(std::string Name){
+    this->name = Name;
+}
 
 
 //Konstruktor der den Member size definiert und Speicher für das Array allokiert

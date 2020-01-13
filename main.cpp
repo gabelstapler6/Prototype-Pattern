@@ -7,8 +7,13 @@ int main(){
 
 //Instanzen anlegen
     std::cout << "Instanzen werden angelegt:\n";
-    CloneTrooper JangoFett(42, "Jango Fett"); 
-    AstroDroid R2D2(108, "R2D2");
+    CloneTrooper JangoFett; 
+    JangoFett.setAge(42);
+    JangoFett.setName("Jango Fett");
+
+    AstroDroid R2D2;
+    R2D2.setAge(108);
+    R2D2.setName("R2");
 
     system("cls");
 
@@ -17,7 +22,8 @@ int main(){
 
 //Hier wird ganz normal der Copy-Konstruktor von CloneTrooper
 //aufgerufen um einen Klon zu erstellen
-    CloneTrooper BobaFett = (CloneTrooper*)Manager.getPrototype(0);
+    CloneTrooper BobaFett = JangoFett;
+
     std::cout << "Boba Fett: \n";
     BobaFett.print();
     system("cls");
@@ -68,7 +74,7 @@ int main(){
     system("cls");
 //zum Test ob auch wirklich alle Membervariablen geklont wurden
     for(auto &i : ArrayClone){
-        i->setVal("Clone");
+        i->setName("Clone");
         i->print();
         std::cout << std::endl;
     }

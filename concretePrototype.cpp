@@ -6,33 +6,24 @@
 //gibt einen Prototyp Zeiger auf ein neu allokiertes CloneTrooper Objekt zurück
 //der Copy-Konstruktor wird aufgerufen
 Prototype* CloneTrooper::clone() const {
-    std::cout << "...Klon wird Produziert\n";
-    return new CloneTrooper(this);
+    std::cout << "CloneTrooper is being cloned...\n";
+    return new CloneTrooper(*this);
 }
 
 //Konstruktoren mit Initialisiererliste
 //Copy-Konstruktor
-CloneTrooper::CloneTrooper(const CloneTrooper* c) : name(c->name), Prototype(c) {
-    std::cout << "CloneTrooper wird kopiert...fertig!\n";
+CloneTrooper::CloneTrooper(const CloneTrooper& c) : Prototype(c) {
+    std::cout << "CloneTrooper Copy-Constructor called...\n";
 }
 
 //Parameterisierter Konstruktor
-CloneTrooper::CloneTrooper(int age, std::string n) : name(n), Prototype(age) {
-    std::cout << "CloneTrooper wird mit Parametern erstellt...loading...fertig!\n";
+CloneTrooper::CloneTrooper() : Prototype() {
+    std::cout << "CloneTrooper Default-Constructor called...\n";
 } 
-
-//setter
-void CloneTrooper::setVal(std::string n){
-    this->name = n;
-}
-//getter
-std::string CloneTrooper::getVal() const{
-    return this->name;
-}
 
 //Ausgabefunktion
 void CloneTrooper::print(){
-    std::cout << "CloneTrooper " << this->name << "\nage: " << this->getAge() << "\nAdress: " << this << "\n";
+    std::cout << "CloneTrooper " << this->getName() << "\nage: " << this->getAge() << "\nAdress: " << this << "\n";
 }
 
 
@@ -41,30 +32,20 @@ void CloneTrooper::print(){
 
 //wie bei CloneTrooper
 Prototype* AstroDroid::clone() const {
-    std::cout << "...Klon wird Produziert\n";
-    return new AstroDroid(this);
+    std::cout << "AstroDroid is being cloned...\n";
+    return new AstroDroid(*this);
 }
 //Konstruktoren mit Initialisiererliste
 //Copy-Konstruktor
-AstroDroid::AstroDroid(const AstroDroid* c) : identity(c->identity), Prototype(c) { 
-    std::cout << "AstroDroid wird kopiert...fertig!\n";
+AstroDroid::AstroDroid(const AstroDroid& c) : Prototype(c) { 
+    std::cout << "AstroDroid Copy-Constructor called...\n";
 } 
 //Parameterisierter Konstruktor
-AstroDroid::AstroDroid(int age, std::string s) : identity(s), Prototype(age) { 
-    std::cout << "AstroDroid wird mit Parametern erstellt...loading...fertig!\n";
+AstroDroid::AstroDroid() : Prototype() { 
+    std::cout << "AstroDroid Default-Constructor called...\n";
 } 
 
 
-//setter
-void AstroDroid::setVal(std::string n){
-    this->identity = n;
-}
-
-//getter
-std::string AstroDroid::getVal() const{
-    return this->identity;
-}
-
 void AstroDroid::print(){
-    std::cout << "Astrodroid " << this->identity << "\nage: " << this->getAge() << "\nAdress: " << this << "\n";
+    std::cout << "Astrodroid " << this->getName() << "\nage: " << this->getAge() << "\nAdress: " << this << "\n";
 }

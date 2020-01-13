@@ -8,17 +8,19 @@ typedef std::string object;
 class Prototype{
     private: 
     int age; //private Member-Variable
+    std::string name; //private Member-Variable
 
     public:
-    Prototype(const Prototype*); //Copy-Konstruktor
-    Prototype(int); //Parameterisierter Konstruktor
+    Prototype(const Prototype&); //Copy-Konstruktor
+    Prototype(); //Parameterisierter Konstruktor
 
     int getAge() const; //getter für den Member age
     void setAge(int); //setter für den Member age
 
+    std::string getName() const;
+    void setName(std::string);
+
     //pure virtual Funktionen, die von den Subklassen implementiert werden müssen
-    virtual void setVal(object) = 0;
-    virtual object getVal() const = 0;
     virtual void print() = 0;
     //wichtige clone Funktion
     virtual Prototype* clone() const = 0; 
